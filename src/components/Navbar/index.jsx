@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 
 import { Inter } from 'next/font/google'
 
+import { IoLogoJavascript } from 'react-icons/io5'
+
 const inter = Inter({
   weight: ['300', '400', '500', '600', '700'],
   subsets: ['latin']
@@ -25,7 +27,10 @@ export function Navbar() {
         <div className="flex items-end justify-between h-16">
           <div className="flex items-center">
             <Link href="/">
-              <p className="text-white text-2xl font-semibold">Prática JS</p>
+              <p className="text-white text-xl font-semibold flex items-center gap-2">
+                <IoLogoJavascript className="text-primary-900 text-3xl rounded-lg" />
+                Prática JS
+              </p>
             </Link>
           </div>
 

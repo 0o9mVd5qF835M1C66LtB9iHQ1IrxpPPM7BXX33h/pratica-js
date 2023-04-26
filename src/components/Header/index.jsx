@@ -8,9 +8,24 @@ import {
   IoShareSocialOutline
 } from 'react-icons/io5'
 
+import { recentPosts } from '@/services'
+
 import imageGroupCode from '../../../public/images/code_group.jpg'
+import { PostCard } from '../PostCard'
+import { useEffect, useState } from 'react'
 
 export function Header() {
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    async function fetchPosts() {
+      const data = await recentPosts()
+      setPosts(data)
+    }
+
+    fetchPosts()
+  }, [])
+
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg-px-8 mt-10">
       <div className="flex items-center gap-10 md:flex-col lg:flex-row lg:mt-24">
@@ -18,7 +33,7 @@ export function Header() {
           <h1 className="font-bold text-transparent text-3xl lg:text-5xl bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
             Tenha ideias de projetos Front-end com projetos reais
           </h1>
-          <p className="mt-10 font-medium text-xl text-zinc-50">
+          <p className="mt-10 font-medium text-lg text-neutral-300">
             Esta procurando algum projeto mas não sabe qual projeto fazer ou por
             onde começar para treinar suas habilidades de HTML, CSS, JavaScript
             e afins. Aqui você pode encontrar repositórios e projetos pronto
@@ -80,14 +95,14 @@ export function Header() {
             href="#"
             class="relative block rounded-sm border-t-4 border-primary-900 p-4 bg-zinc-900 shadow-xl sm:p-6 lg:p-8"
           >
-            <div class="flex items-center gap-4">
+            <div className="flex items-center gap-4">
               <IoShareSocialOutline size={56} className="text-gray-500" />
-              <h3 class="text-3xl font-bold sm:text-4xl text-primary-900">
+              <h3 className="text-3xl font-bold sm:text-4xl text-primary-900">
                 100+
               </h3>
             </div>
 
-            <p class="mt-4 font-medium text-gray-500">
+            <p className="mt-4 font-medium text-gray-500">
               Aqui você pode encontrar uma coleção com os melhores projetos para
               lhe inspirar na hora da criação.
             </p>
@@ -102,11 +117,22 @@ export function Header() {
 
         <div className="w-full flex flex-col items-center mt-10">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {console.log(posts)}
+            {posts.map((post) => (
+              <CardProject
+                url={post.featuredImage.url}
+                title={post.title}
+                description={post.excerpt}
+                tags={post.tags}
+                difficulty={post.categories[0].name}
+                key={post.title}
+              />
+            ))}
+            {/* <CardProject />
             <CardProject />
             <CardProject />
             <CardProject />
-            <CardProject />
-            <CardProject />
+            <CardProject /> */}
           </div>
 
           <Link
@@ -119,4 +145,12 @@ export function Header() {
       </div>
     </div>
   )
+}
+
+export async function getStaticProps() {
+  const posts = (await recentPosts()) || []
+
+  return {
+    props: { posts }
+  }
 }
