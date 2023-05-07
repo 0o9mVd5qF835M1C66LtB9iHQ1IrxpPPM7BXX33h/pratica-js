@@ -1,25 +1,25 @@
-import Link from 'next/link'
-import { useState } from 'react'
-import { useRouter } from 'next/router'
+import Link from "next/link";
+import { useState } from "react";
+import { useRouter } from "next/router";
 
-import { Inter } from 'next/font/google'
+import { Inter } from "next/font/google";
 
-import { IoLogoJavascript } from 'react-icons/io5'
+import { IoLogoJavascript } from "react-icons/io5";
 
 const inter = Inter({
-  weight: ['300', '400', '500', '600', '700'],
-  subsets: ['latin']
-})
+  weight: ["300", "400", "500", "600", "700"],
+  subsets: ["latin"],
+});
 
 export function Navbar() {
-  const [isMenuOpen, setIsMenuOpen] = useState(false)
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   const handleMenuToggle = () => {
-    setIsMenuOpen(!isMenuOpen)
-    document.body.classList.toggle('overflow-hidden')
-  }
+    setIsMenuOpen(!isMenuOpen);
+    document.body.classList.toggle("overflow-hidden");
+  };
 
-  const router = useRouter()
+  const router = useRouter();
 
   return (
     <nav className={inter.className}>
@@ -39,7 +39,7 @@ export function Navbar() {
               <Link href="/">
                 <p
                   className={`font-medium text-base ${
-                    router.pathname === '/' ? 'text-white' : 'text-white/30'
+                    router.pathname === "/" ? "text-white" : "text-white/30"
                   }`}
                 >
                   Home
@@ -47,10 +47,10 @@ export function Navbar() {
               </Link>
               <Link href="/project">
                 <p
-                  className={`font-medium text-lg ${
-                    router.pathname === '/project'
-                      ? 'text-white'
-                      : 'text-white/30'
+                  className={`font-medium text-base ${
+                    router.pathname === "/project"
+                      ? "text-white"
+                      : "text-white/30"
                   }`}
                 >
                   Projetos
@@ -59,9 +59,9 @@ export function Navbar() {
               <Link href="/about">
                 <p
                   className={`font-medium text-base ${
-                    router.pathname === '/about'
-                      ? 'text-white'
-                      : 'text-white/30'
+                    router.pathname === "/about"
+                      ? "text-white"
+                      : "text-white/30"
                   }`}
                 >
                   Sobre
@@ -71,7 +71,7 @@ export function Navbar() {
           </div>
 
           <div className="mr-2 flex md:hidden">
-            {' '}
+            {" "}
             {/*Quando chegar em MD ele esconde o botão */}
             <button
               type="button"
@@ -118,12 +118,12 @@ export function Navbar() {
         </div>
       </div>
 
-      <div className={`${isMenuOpen ? 'block' : 'hidden'} md:hidden`}>
+      <div className={`${isMenuOpen ? "block" : "hidden"} md:hidden`}>
         <div className="backdrop-blur-lg h-screen flex items-center justify-center flex-col gap-6">
           <Link href="/">
             <p
               className={`font-medium text-base ${
-                router.pathname === '/' ? 'text-white' : 'text-white/30'
+                router.pathname === "/" ? "text-white" : "text-white/30"
               }`}
             >
               Home
@@ -132,7 +132,7 @@ export function Navbar() {
           <Link href="/">
             <p
               className={`font-medium text-base ${
-                router.pathname === '/project' ? 'text-white' : 'text-white/30'
+                router.pathname === "/project" ? "text-white" : "text-white/30"
               }`}
             >
               Projetos
@@ -141,7 +141,7 @@ export function Navbar() {
           <Link href="/">
             <p
               className={`font-medium text-base ${
-                router.pathname === '/about' ? 'text-white' : 'text-white/30'
+                router.pathname === "/about" ? "text-white" : "text-white/30"
               }`}
             >
               Sobre
@@ -150,5 +150,5 @@ export function Navbar() {
         </div>
       </div>
     </nav>
-  )
+  );
 }

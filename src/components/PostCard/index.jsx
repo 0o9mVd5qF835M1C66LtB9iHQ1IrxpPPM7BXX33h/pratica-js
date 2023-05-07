@@ -1,9 +1,7 @@
-import moment from 'moment'
-import Image from 'next/image'
-import Link from 'next/link'
+import Link from "next/link";
 
 export function PostCard({ post }) {
-  console.log(post)
+  console.log(post);
 
   return (
     <>
@@ -22,7 +20,7 @@ export function PostCard({ post }) {
           <p className="text-base font-normal">{post.excerpt}</p>
           <div className="flex items-center justify-between">
             <p className="badge badge-outline text-sm lg:text-base">
-              {post.tags.replace(/\s+/g, ' • ')}
+              {post.tags.replace(/\s+/g, " • ")}
             </p>
             <p className="border-2 border-orange-500 rounded-3xl px-3 py-2 text-sm lg:text-base">
               {post.categories[0].name}
@@ -31,5 +29,5 @@ export function PostCard({ post }) {
         </div>
       </div>
     </>
-  )
+  );
 }

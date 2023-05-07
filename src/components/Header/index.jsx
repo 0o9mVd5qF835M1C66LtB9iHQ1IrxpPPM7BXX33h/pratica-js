@@ -1,30 +1,31 @@
-import Link from 'next/link'
-import Image from 'next/image'
+import Link from "next/link";
+import Image from "next/image";
 
-import { CardProject } from '../Card'
+import { CardProject } from "../Card";
 import {
   IoRocketOutline,
   IoCloudDownloadOutline,
-  IoShareSocialOutline
-} from 'react-icons/io5'
+  IoShareSocialOutline,
+  IoCodeOutline,
+} from "react-icons/io5";
 
-import { recentPosts } from '@/services'
+import { recentPosts } from "@/services";
 
-import imageGroupCode from '../../../public/images/code_group.jpg'
-import { PostCard } from '../PostCard'
-import { useEffect, useState } from 'react'
+import imageGroupCode from "../../../public/images/code_group.jpg";
+import { PostCard } from "../PostCard";
+import { useEffect, useState } from "react";
 
 export function Header() {
-  const [posts, setPosts] = useState([])
+  const [posts, setPosts] = useState([]);
 
   useEffect(() => {
     async function fetchPosts() {
-      const data = await recentPosts()
-      setPosts(data)
+      const data = await recentPosts();
+      setPosts(data);
     }
 
-    fetchPosts()
-  }, [])
+    fetchPosts();
+  }, []);
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg-px-8 mt-10">
@@ -49,64 +50,59 @@ export function Header() {
         />
       </div>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mt-28">
-        <div>
-          <a
-            href="#"
-            class="relative block rounded-sm border-t-4 border-primary-900 p-4 bg-zinc-900 shadow-xl sm:p-6 lg:p-8"
-          >
-            <div class="flex items-center gap-4">
-              <IoRocketOutline size={56} className="text-gray-500" />
-
-              <h3 class="text-3xl font-bold sm:text-4xl text-primary-900">
-                100+
-              </h3>
+      <div class="flex flex-col mt-28">
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-4 gap-4">
+          <div class="flex items-start p-4 rounded-xl bg-zinc-800 shadow-lg border-t-4 border-primary-900">
+            <div class="flex items-center justify-center h-12 w-12">
+              <IoRocketOutline size={36} className="text-zinc-100" />
             </div>
 
-            <p class="mt-4 font-medium text-gray-500">
-              Aqui você pode encontrar uma coleção com os melhores projetos para
-              lhe inspirar na hora da criação.
-            </p>
-          </a>
-        </div>
+            <div class="ml-4">
+              <p class="mt-2 text-sm text-zinc-100">
+                Aqui você pode encontrar uma coleção com os melhores projetos
+                para lhe inspirar na hora da criação.
+              </p>
+            </div>
+          </div>
 
-        <div>
-          <a
-            href="#"
-            class="relative block rounded-sm border-t-4 border-primary-900 p-4 bg-zinc-900 shadow-xl sm:p-6 lg:p-8"
-          >
-            <div class="flex items-center gap-4">
-              <IoCloudDownloadOutline size={56} className="text-gray-500" />
-
-              <h3 class="text-3xl font-bold sm:text-4xl text-primary-900">
-                100+
-              </h3>
+          <div class="flex items-start p-4 rounded-xl bg-zinc-800 shadow-lg border-t-4 border-primary-900">
+            <div class="flex items-center justify-center h-12 w-12 ">
+              <IoCloudDownloadOutline size={36} className="text-zinc-100" />
             </div>
 
-            <p class="mt-4 font-medium text-gray-500">
-              Aqui você pode encontrar uma coleção com os melhores projetos para
-              lhe inspirar na hora da criação.
-            </p>
-          </a>
-        </div>
+            <div class="ml-4">
+              <p class="mt-2 text-sm text-zinc-100">
+                Escolha o projeto que você sinta que será desafiador para possa
+                evoluir para o próximo nível!
+              </p>
+            </div>
+          </div>
 
-        <div>
-          <a
-            href="#"
-            class="relative block rounded-sm border-t-4 border-primary-900 p-4 bg-zinc-900 shadow-xl sm:p-6 lg:p-8"
-          >
-            <div className="flex items-center gap-4">
-              <IoShareSocialOutline size={56} className="text-gray-500" />
-              <h3 className="text-3xl font-bold sm:text-4xl text-primary-900">
-                100+
-              </h3>
+          <div class="flex items-start p-4 rounded-xl bg-zinc-800 shadow-lg border-t-4 border-primary-900">
+            <div class="flex items-center justify-center h-12 w-12">
+              <IoCodeOutline size={36} className="text-zinc-100" />
             </div>
 
-            <p className="mt-4 font-medium text-gray-500">
-              Aqui você pode encontrar uma coleção com os melhores projetos para
-              lhe inspirar na hora da criação.
-            </p>
-          </a>
+            <div class="ml-4">
+              <p class="mt-2 text-sm text-zinc-100">
+                Baixe os desafios com arquivos iniciais com tudo que é
+                necessários para concluir o desafio.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-start p-4 rounded-xl bg-zinc-800 shadow-lg border-t-4 border-primary-900">
+            <div class="flex items-center justify-center h-12 w-12">
+              <IoShareSocialOutline size={36} className="text-zinc-100" />
+            </div>
+
+            <div class="ml-4">
+              <p class="mt-2 text-sm text-zinc-100">
+                Publique o desafio nas redes sociais para que todos possam ver e
+                da feedback sobre seu código!
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -125,6 +121,7 @@ export function Header() {
                 description={post.excerpt}
                 tags={post.tags}
                 difficulty={post.categories[0].name}
+                slug={post.slug}
                 key={post.title}
               />
             ))}
@@ -136,7 +133,7 @@ export function Header() {
           </div>
 
           <Link
-            href="/"
+            href="/project"
             className="px-4 py-2 rounded-full text-lg font-semibold text-white border-primary-900 border-2 mt-10 hover:bg-primary-900 hover:text-dark-900 transition-all duration-250"
           >
             Veja mais projetos
@@ -144,13 +141,13 @@ export function Header() {
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export async function getStaticProps() {
-  const posts = (await recentPosts()) || []
+  const posts = (await recentPosts()) || [];
 
   return {
-    props: { posts }
-  }
+    props: { posts },
+  };
 }

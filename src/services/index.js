@@ -1,6 +1,6 @@
-import { request, gql } from 'graphql-request'
+import { request, gql } from "graphql-request";
 
-const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT
+const graphqlAPI = process.env.NEXT_PUBLIC_GRAPHCMS_ENDPOINT;
 
 export const getPosts = async () => {
   const query = gql`
@@ -32,12 +32,12 @@ export const getPosts = async () => {
         }
       }
     }
-  `
+  `;
 
-  const result = await request(graphqlAPI, query)
+  const result = await request(graphqlAPI, query);
 
-  return result.postsConnection.edges
-}
+  return result.postsConnection.edges;
+};
 
 export const recentPosts = async () => {
   const query = gql`
@@ -57,12 +57,12 @@ export const recentPosts = async () => {
         }
       }
     }
-  `
+  `;
 
-  const result = await request(graphqlAPI, query)
+  const result = await request(graphqlAPI, query);
 
-  return result.posts
-}
+  return result.posts;
+};
 
 export const getPostDetails = async (slug) => {
   const query = gql`
@@ -94,9 +94,9 @@ export const getPostDetails = async (slug) => {
         }
       }
     }
-  `
+  `;
 
-  const result = await request(graphqlAPI, query, { slug })
+  const result = await request(graphqlAPI, query, { slug });
 
-  return result.post
-}
+  return result.post;
+};
