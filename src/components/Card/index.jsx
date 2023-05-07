@@ -1,11 +1,22 @@
-export function CardProject({ url, title, description, tags, difficulty }) {
+import Link from "next/link";
+
+export function CardProject({
+  url,
+  title,
+  description,
+  tags,
+  difficulty,
+  slug,
+}) {
   return (
     <div className="card w-full bg-base-100 border-zinc-700 rounded-md bg-zinc-800">
       <figure>
         <img src={url} className="rounded-t-md" alt={title} />
       </figure>
       <div className="px-3 py-6 flex flex-col gap-3 text-white">
-        <p className="text-2xl font-semibold">{title}</p>
+        <h3 className="text-2xl font-semibold hover:text-primary-900">
+          <Link href={`/post/${slug}`}>{title}</Link>
+        </h3>
         <p className="text-base font-normal">{description}</p>
         <div className="flex items-center justify-between">
           <p className="badge badge-outline text-sm lg:text-base">{tags}</p>
@@ -15,5 +26,5 @@ export function CardProject({ url, title, description, tags, difficulty }) {
         </div>
       </div>
     </div>
-  )
+  );
 }
