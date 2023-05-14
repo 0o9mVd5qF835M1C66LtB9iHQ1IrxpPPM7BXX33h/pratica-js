@@ -92,6 +92,9 @@ export const getPostDetails = async (slug) => {
         available {
           raw
         }
+        linkProject {
+          raw
+        }
       }
     }
   `;
