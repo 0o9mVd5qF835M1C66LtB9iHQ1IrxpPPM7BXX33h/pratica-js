@@ -27,8 +27,8 @@ export function Navbar() {
         <div className="flex items-end justify-between h-16">
           <div className="flex items-center">
             <Link href="/">
-              <p className="text-white text-xl font-semibold flex items-center gap-2">
-                <IoLogoJavascript className="text-primary-900 text-3xl rounded-lg" />
+              <p className="text-white text-lg font-semibold flex items-center gap-2">
+                <IoLogoJavascript className="text-primary-900 text-2xl rounded-lg" />
                 Prática JS
               </p>
             </Link>
