@@ -19,10 +19,8 @@ export function CardProject({
         </h3>
         <p className="text-base font-normal">{description}</p>
         <div className="flex items-center justify-between">
-          <p className="badge badge-outline text-sm lg:text-base">
-            {tags.replace(/\s+/g, " • ")}
-          </p>
-          <p className="border-2 border-orange-500 rounded-3xl px-3 py-2 text-sm lg:text-base">
+          <p className="badge badge-outline text-sm ">{tags}</p>
+          <p className="border-2 py-2 px-5 rounded-full border-orange-500 text-sm">
             {difficulty}
           </p>
         </div>
