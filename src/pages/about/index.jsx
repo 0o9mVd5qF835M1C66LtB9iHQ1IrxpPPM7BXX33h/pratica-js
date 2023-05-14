@@ -1,5 +1,5 @@
-import Link from 'next/link'
-import { useState, useEffect } from 'react'
+import Link from "next/link";
+import { useState, useEffect } from "react";
 
 const Card = ({ name, publicRepos, followers, avatar_url, bio, url }) => {
   return (
@@ -44,32 +44,32 @@ const Card = ({ name, publicRepos, followers, avatar_url, bio, url }) => {
         </div>
       </div>
     </div>
-  )
-}
+  );
+};
 
 export default function About() {
-  const [uniqueUsers, setUniqueUsers] = useState([])
+  const [uniqueUsers, setUniqueUsers] = useState([]);
 
-  const listUserGithub = ['alysomCRY', 'ViniciusOliver-stack', 'vinicius']
+  const listUserGithub = ["alysomCRY", "ViniciusOliver-stack"];
 
   useEffect(() => {
     const fetchUsers = async () => {
-      const users = []
+      const users = [];
       for (let i = 0; i < listUserGithub.length; i++) {
         const response = await fetch(
           `https://api.github.com/users/${listUserGithub[i]}`
-        )
-        const data = await response.json()
-        const index = users.findIndex((user) => user.id === data.id)
+        );
+        const data = await response.json();
+        const index = users.findIndex((user) => user.id === data.id);
         if (index === -1) {
-          users.push(data)
+          users.push(data);
         }
       }
-      setUniqueUsers(users)
-    }
+      setUniqueUsers(users);
+    };
 
-    fetchUsers()
-  }, [])
+    fetchUsers();
+  }, []);
   return (
     <div className="max-w-7xl mx-auto  px-4 sm:px-6 lg-px-8 mt-10">
       <div className="flex gap-10 items-center">
@@ -110,5 +110,5 @@ export default function About() {
         </div>
       ))}
     </div>
-  )
+  );
 }
