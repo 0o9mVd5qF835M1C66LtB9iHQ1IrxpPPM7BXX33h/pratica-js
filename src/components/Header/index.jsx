@@ -12,7 +12,6 @@ import {
 import { recentPosts } from "@/services";
 
 import imageGroupCode from "../../../public/images/code_group.jpg";
-import { PostCard } from "../PostCard";
 import { useEffect, useState } from "react";
 
 export function Header() {
@@ -31,10 +30,10 @@ export function Header() {
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg-px-8 mt-10">
       <div className="flex items-center gap-10 md:flex-col lg:flex-row lg:mt-24">
         <div>
-          <h1 className="font-bold text-transparent text-3xl lg:text-5xl bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500 ">
+          <h1 className="font-semibold text-5xl text-primary-900 text-left bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 bg-clip-text text-transparent">
             Tenha ideias de projetos Front-end com projetos reais
           </h1>
-          <p className="mt-10 font-medium text-lg text-neutral-300">
+          <p className="mt-10 font-medium text-lg text-zinc-50">
             Esta procurando algum projeto mas não sabe qual projeto fazer ou por
             onde começar para treinar suas habilidades de HTML, CSS, JavaScript
             e afins. Aqui você pode encontrar repositórios e projetos pronto
@@ -54,7 +53,7 @@ export function Header() {
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 mt-4 gap-4">
           <div class="flex items-start p-4 rounded-xl bg-zinc-800 shadow-lg border-t-4 border-primary-900">
             <div class="flex items-center justify-center h-12 w-12">
-              <IoRocketOutline size={36} className="text-zinc-100" />
+              <IoRocketOutline size={36} className="text-zinc-400" />
             </div>
 
             <div class="ml-4">
@@ -67,7 +66,7 @@ export function Header() {
 
           <div class="flex items-start p-4 rounded-xl bg-zinc-800 shadow-lg border-t-4 border-primary-900">
             <div class="flex items-center justify-center h-12 w-12 ">
-              <IoCloudDownloadOutline size={36} className="text-zinc-100" />
+              <IoCloudDownloadOutline size={36} className="text-zinc-400" />
             </div>
 
             <div class="ml-4">
@@ -80,7 +79,7 @@ export function Header() {
 
           <div class="flex items-start p-4 rounded-xl bg-zinc-800 shadow-lg border-t-4 border-primary-900">
             <div class="flex items-center justify-center h-12 w-12">
-              <IoCodeOutline size={36} className="text-zinc-100" />
+              <IoCodeOutline size={36} className="text-zinc-400" />
             </div>
 
             <div class="ml-4">
@@ -93,7 +92,7 @@ export function Header() {
 
           <div class="flex items-start p-4 rounded-xl bg-zinc-800 shadow-lg border-t-4 border-primary-900">
             <div class="flex items-center justify-center h-12 w-12">
-              <IoShareSocialOutline size={36} className="text-zinc-100" />
+              <IoShareSocialOutline size={36} className="text-zinc-400" />
             </div>
 
             <div class="ml-4">
@@ -107,13 +106,12 @@ export function Header() {
       </div>
 
       <div className="mt-24">
-        <h2 className="font-bold text-transparent text-3xl lg:text-5xl bg-clip-text bg-gradient-to-r from-indigo-500 via-purple-500 to-pink-500">
+        <h2 className="font-semibold text-4xl text-primary-900 text-left bg-gradient-to-r from-yellow-200 via-yellow-300 to-yellow-400 bg-clip-text text-transparent">
           Publicados recentemente
         </h2>
 
         <div className="w-full flex flex-col items-center mt-10">
           <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {console.log(posts)}
             {posts.map((post) => (
               <CardProject
                 url={post.featuredImage.url}
@@ -125,16 +123,11 @@ export function Header() {
                 key={post.title}
               />
             ))}
-            {/* <CardProject />
-            <CardProject />
-            <CardProject />
-            <CardProject />
-            <CardProject /> */}
           </div>
 
           <Link
             href="/project"
-            className="px-4 py-2 rounded-full text-lg font-semibold text-white border-primary-900 border-2 mt-10 hover:bg-primary-900 hover:text-dark-900 transition-all duration-250"
+            className="border border-primary-900 mt-10 text-white px-4 py-2 rounded-full hover:bg-primary-900 hover:text-zinc-900 font-medium duration-300"
           >
             Veja mais projetos
           </Link>
