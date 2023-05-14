@@ -14,15 +14,13 @@ export function PostCard({ post }) {
           />
         </figure>
         <div className="px-3 py-6 flex flex-col gap-3 text-white">
-          <h3 className="text-2xl font-semibold hover:text-primary-900">
+          <h3 className="text-2xl font-semibold text-primary-900 hover:text-primary-900/80">
             <Link href={`/post/${post.slug}`}>{post.title}</Link>
           </h3>
-          <p className="text-base font-normal">{post.excerpt}</p>
+          <p className="text-base font-normal ">{post.excerpt}</p>
           <div className="flex items-center justify-between">
-            <p className="badge badge-outline text-sm lg:text-base">
-              {post.tags.replace(/\s+/g, " • ")}
-            </p>
-            <p className="border-2 border-orange-500 rounded-3xl px-3 py-2 text-sm lg:text-base">
+            <p className="badge badge-outline text-sm ">{post.tags}</p>
+            <p className="border-2 border-orange-500 rounded-3xl px-3 py-2 text-sm">
               {post.categories[0].name}
             </p>
           </div>
